@@ -28,22 +28,22 @@ class Transfomer(nn.Module):
 
     def forward(self, x, t):
         # x -> [1,3,14] -> [1,1,3,14]
-        x = x.reshape(1,1,3,self.input_dim)
+        x = x.reshape(1, 1, 3, self.input_dim)
         o = self.conv(x)
 
         # o -> [1,3,1,14] -> [1,3,14]
-        o = o.reshape(1,3,self.input_dim)
+        o = o.reshape(1, 3, self.input_dim)
 
         ca = self.channel_atten(o)
         o = ca * o
-        
-        o = o.permute(1,0,2)
+
+        o = o.permute(1, 0, 2)
         o, _ = self.lstm(o)
         ta = self.lstm_atten(o)
         o = ta * o
-        
-        o = o.permute(1,0,2)
-        o = self.encoder(x,t)
+
+        o = o.permute(1, 0, 2)
+        o = self.encoder(x, t)
         o = self.out(o)
         return o
 
@@ -237,7 +237,7 @@ class Encoder(nn.Module):
 if __name__ == "__main__":
     tensor = torch.randn((1, 192, 17))
     # lstm = Transfomer(14)
-    lstm = nn.LSTM(17,2,1)
+    lstm = nn.LSTM(17, 2, 1)
     # lstm = LSTM(17,2)
     out, _ = lstm(tensor)
     # model = Encoder(192*17)
