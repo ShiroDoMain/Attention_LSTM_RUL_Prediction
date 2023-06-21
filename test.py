@@ -1,7 +1,5 @@
 import numpy as np
-import pandas as pd
 from torch.utils.data import DataLoader
-import torch
 from torch.autograd import Variable
 from tqdm import tqdm
 from data_util import load_RUL, TestLoader

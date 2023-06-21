@@ -1,8 +1,17 @@
-# Abstruact  
+# Abstract
 Transfomer + ChannelAttention + LSTMAttention  
 
 # Useage  
-You may simply give the following command for both training and evaluation:
-```python
-python train.py
+- Clone this repository:
+```shell
+git clone https://github.com/ShiroDoMain/Attention_LSTM_RUL_Prediction.git
+```  
+- install requirements
+```shell
+pip install -r requirements.txt
+```  
+- run
+```shell
+cd Attention_LSTM_RUL_Prediction
+python3 train.py
 ```
